@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
     "@fal-ai/client": "^1.10.1",
     "@hookform/resolvers": "^5.4.0",
     "@polar-sh/nextjs": "^0.9.6",

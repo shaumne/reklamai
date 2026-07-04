@@ -3,7 +3,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { computeCredits, planAtLeast, type ModelCatalogRow, type PlanTier } from "@/lib/credits";
-import { categoryById, buildVideoPrompt } from "@/lib/ads/categories";
+import { categoryById } from "@/lib/ads/categories";
+import { directVideoPrompt } from "@/lib/ads/director";
 import { platformById } from "@/lib/ads/platforms";
 import { falProvider, buildVideoInput, buildTtsInput, buildMusicInput } from "@/lib/providers/fal";
 import { createGenerationSchema, type CreateGenerationInput } from "@/lib/validation/generation";
@@ -102,16 +103,18 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
     params: Record<string, unknown>;
   }> = [];
 
-  const videoPrompt = buildVideoPrompt(
+  const videoPrompt = await directVideoPrompt({
     category,
-    {
+    brief: {
       productName: input.productName,
       description: input.description,
       campaign: input.campaign,
       extraDirection: input.extraDirection,
     },
-    { durationSeconds: input.durationSeconds, aspectRatio: platform.aspectRatio },
-  );
+    durationSeconds: input.durationSeconds,
+    aspectRatio: platform.aspectRatio,
+    platformId: input.platformId,
+  });
 
   const videoCredits = computeCredits({
     model: videoModel,

@@ -307,27 +307,38 @@ export type ProductBrief = {
   extraDirection?: string;
 };
 
-// Builds the final English prompt sent to the video model.
+// Builds the fallback English prompt sent to the video model.
+// Beat count scales with duration — a 5s clip is ONE continuous shot,
+// not a four-scene montage.
 export function buildVideoPrompt(
   category: AdCategory,
   brief: ProductBrief,
   opts: { durationSeconds: number; aspectRatio: string },
 ): string {
   const subject = brief.description
-    ? `${brief.productName} — ${brief.description}`
+    ? `${brief.productName}, ${brief.description}`
     : brief.productName;
+  const scene = category.scene;
+
+  let action: string;
+  if (opts.durationSeconds <= 6) {
+    action = `One continuous shot: ${scene.productFocus}.`;
+  } else if (opts.durationSeconds <= 10) {
+    action = `The shot opens as ${scene.productFocus}, then flows into ${scene.lifestyle}.`;
+  } else {
+    action = `The sequence opens as ${scene.opening}, moves into ${scene.productFocus}, and settles on ${scene.cta}.`;
+  }
 
   const parts = [
-    `Professional commercial advertisement for ${subject}.`,
-    `Scene: ${category.scene.opening}; then ${category.scene.productFocus}; then ${category.scene.lifestyle}; closing with ${category.scene.cta}.`,
-    `Tone: ${category.tone}.`,
+    `Cinematic ${opts.durationSeconds}-second product commercial featuring ${subject}.`,
+    action,
     `Lighting: ${category.lighting}.`,
     `Camera: ${category.camera}.`,
-    `High-end production quality, sharp focus, commercial color grading, ${opts.aspectRatio} aspect ratio, ${opts.durationSeconds} second ad.`,
+    `Mood: ${category.tone}.`,
+    `Photorealistic, shallow depth of field, high-end commercial color grading, ${opts.aspectRatio} composition, ends on a stable composed frame.`,
+    "No on-screen text, no logos, no watermarks.",
   ];
-  if (brief.campaign) parts.push(`Campaign message to convey: "${brief.campaign}".`);
   if (brief.extraDirection) parts.push(`Extra direction: ${brief.extraDirection}.`);
-  parts.push("No text overlays, no watermarks, no logos burned into the footage.");
   return parts.join(" ");
 }
 
