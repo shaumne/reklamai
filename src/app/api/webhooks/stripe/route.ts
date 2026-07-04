@@ -63,7 +63,8 @@ export async function POST(request: Request) {
         const invoice = event.data.object;
         const subDetails = invoice.parent?.subscription_details;
         const userId = subDetails?.metadata?.user_id ?? invoice.metadata?.user_id;
-        const priceId = invoice.lines?.data?.[0]?.pricing?.price_details?.price;
+        const rawPrice = invoice.lines?.data?.[0]?.pricing?.price_details?.price;
+        const priceId = typeof rawPrice === "string" ? rawPrice : rawPrice?.id;
         if (userId && priceId) {
           await fulfillOrder({
             provider: "stripe",
