@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
@@ -31,15 +31,17 @@ function GoogleIcon() {
 
 export function GoogleButton() {
   const t = useTranslations("auth");
+  const locale = useLocale();
   const [pending, setPending] = useState(false);
 
   async function handleClick() {
     setPending(true);
+    const next = locale === "tr" ? "/dashboard" : `/${locale}/dashboard`;
     const supabase = createClient();
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+        redirectTo: `${window.location.origin}/auth/callback?next=${next}`,
       },
     });
     if (error) setPending(false);

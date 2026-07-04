@@ -20,4 +20,5 @@ export type JobStatusResult =
 export interface GenerationProvider {
   submitJob(input: SubmitJobInput): Promise<SubmitJobResult>;
   checkJob(modelRef: string, requestId: string): Promise<JobStatusResult>;
+  cancelJob(modelRef: string, requestId: string): Promise<void>;
 }

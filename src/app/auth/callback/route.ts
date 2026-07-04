@@ -34,6 +34,14 @@ export async function GET(request: NextRequest) {
           .eq("user_id", userId);
         if (!existing && (guardRows ?? 0) === 0) {
           await maybeGrantWelcome(userId);
+          // first OAuth sign-in: persist the UI locale the user signed up from
+          const localeFromNext = next.match(/^\/(en|ja)\//)?.[1];
+          if (localeFromNext) {
+            await admin
+              .from("profiles")
+              .update({ locale: localeFromNext })
+              .eq("id", userId);
+          }
         }
       }
       return NextResponse.redirect(`${origin}${next}`);

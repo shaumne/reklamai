@@ -194,6 +194,25 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
   }
 
   const generationIds: string[] = [];
+  const submitted: Array<{ generationId: string; falModelId: string; requestId: string }> = [];
+
+  // if a later job in the bundle fails, cancel and refund everything that
+  // already went out so the user is never partially charged for a "failed" run
+  async function rollbackSubmitted() {
+    for (const done of submitted) {
+      try {
+        await falProvider.cancelJob(done.falModelId, done.requestId);
+      } catch {
+        // already running/finished — settle/refund guards keep the ledger sane
+      }
+      await admin.rpc("refund_generation", { p_generation_id: done.generationId });
+      await admin
+        .from("generations")
+        .update({ status: "canceled", error: "bundle rolled back" })
+        .eq("id", done.generationId)
+        .in("status", ["queued", "processing"]);
+    }
+  }
 
   for (const job of jobs) {
     const { data: generation, error: insertError } = await admin
@@ -229,6 +248,7 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
         .from("generations")
         .update({ status: "canceled", error: "insufficient credits" })
         .eq("id", generation.id);
+      await rollbackSubmitted();
       return {
         ok: false,
         error: reserveError.message.includes("INSUFFICIENT_CREDITS")
@@ -250,6 +270,11 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
         .eq("id", generation.id);
 
       generationIds.push(generation.id);
+      submitted.push({
+        generationId: generation.id,
+        falModelId: job.model.fal_model_id,
+        requestId,
+      });
     } catch (err) {
       await admin.rpc("refund_generation", { p_generation_id: generation.id });
       await admin
@@ -259,6 +284,7 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
           error: `submit failed: ${err instanceof Error ? err.message.slice(0, 300) : "unknown"}`,
         })
         .eq("id", generation.id);
+      await rollbackSubmitted();
       return { ok: false, error: "SUBMIT_FAILED" };
     }
   }

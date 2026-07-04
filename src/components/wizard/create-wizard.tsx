@@ -684,8 +684,13 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
               </div>
             )}
 
-            {selectedModel &&
-              (selectedModel.audio_unit_price_usd != null || selectedModel.native_audio) && (
+            {selectedModel && selectedModel.native_audio && (
+              <div className="mt-5">
+                <Badge tone="success">{t("nativeAudio")}</Badge>
+              </div>
+            )}
+
+            {selectedModel && selectedModel.audio_unit_price_usd != null && (
                 <label className="group mt-5 flex cursor-pointer items-center gap-2.5 text-sm text-ink-700 select-none">
                   <input
                     type="checkbox"

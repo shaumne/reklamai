@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Bricolage_Grotesque, Inter, Noto_Sans_JP } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
@@ -25,14 +25,26 @@ const notoJp = Noto_Sans_JP({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "ReklamlarAI — AI ile Reklam Videosu",
-    template: "%s · ReklamlarAI",
-  },
-  description:
-    "İşletmeniz için saniyeler içinde profesyonel reklam videoları üretin. Görselden videoya, seslendirme ve müzik dahil.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const resolved = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
+  const t = await getTranslations({ locale: resolved, namespace: "meta" });
+
+  return {
+    title: { default: t("title"), template: "%s · ReklamlarAI" },
+    description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      siteName: "ReklamlarAI",
+      type: "website",
+    },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

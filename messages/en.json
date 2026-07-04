@@ -220,7 +220,8 @@
     "durationLockedHint": "Upgrade your plan for longer videos",
     "categoryEffectTitle": "How this choice shapes your video",
     "categoryAll": "All",
-    "categoryAiNote": "The AI director adapts this recipe to your product"
+    "categoryAiNote": "The AI director adapts this recipe to your product",
+    "nativeAudio": "Audio included"
   },
   "videos": {
     "title": "My videos",
@@ -337,5 +338,9 @@
     "automotive": "Light: dusk rim light · Camera: low tracking + body sweep · Feel: adrenaline · Music: cinematic percussion",
     "app-saas": "Light: modern, brand-accented · Camera: device still, camera moves · Feel: relief · Music: optimistic tech-pop",
     "event": "Light: stage washes, flares · Camera: crowd close-ups · Feel: peak energy · Music: festival EDM"
+  },
+  "meta": {
+    "title": "ReklamlarAI — AI Video Ads in Minutes",
+    "description": "Create professional ad videos for your business in seconds. Image-to-video generation with voiceover and music included."
   }
 }

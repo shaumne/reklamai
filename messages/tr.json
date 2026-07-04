@@ -220,7 +220,8 @@
     "durationLockedHint": "Daha uzun videolar için planını yükselt",
     "categoryEffectTitle": "Bu seçim videonu böyle şekillendirecek",
     "categoryAll": "Tümü",
-    "categoryAiNote": "Yapay zeka yönetmen bu tarifi senin ürününe göre uyarlar"
+    "categoryAiNote": "Yapay zeka yönetmen bu tarifi senin ürününe göre uyarlar",
+    "nativeAudio": "Ses dahildir"
   },
   "videos": {
     "title": "Videolarım",
@@ -337,5 +338,9 @@
     "automotive": "Işık: alacakaranlık rim ışığı · Kamera: alçak takip + gövde süpürmesi · His: adrenalin · Müzik: sinematik perküsyon",
     "app-saas": "Işık: modern, marka renkli · Kamera: cihaz sabit, kamera akar · His: rahatlama · Müzik: iyimser tech-pop",
     "event": "Işık: sahne yıkamaları, flare · Kamera: kalabalık yakın planları · His: coşku patlaması · Müzik: festival EDM"
+  },
+  "meta": {
+    "title": "ReklamlarAI — Yapay Zekâ ile Reklam Videosu",
+    "description": "İşletmeniz için saniyeler içinde profesyonel reklam videoları üretin. Görselden videoya, seslendirme ve müzik dahil."
   }
 }

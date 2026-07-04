@@ -108,7 +108,7 @@
     "footerLegal": "法的情報",
     "footerTerms": "利用規約",
     "footerPrivacy": "プライバシー",
-    "footerRights": "All rights reserved."
+    "footerRights": "無断転載を禁じます。"
   },
   "auth": {
     "loginTitle": "おかえりなさい",
@@ -220,7 +220,8 @@
     "durationLockedHint": "より長い動画を作成するにはプランをアップグレードしてください",
     "categoryEffectTitle": "この選択が動画をこう演出します",
     "categoryAll": "すべて",
-    "categoryAiNote": "AIディレクターがこの演出をあなたの商品に合わせて調整します"
+    "categoryAiNote": "AIディレクターがこの演出をあなたの商品に合わせて調整します",
+    "nativeAudio": "音声付き"
   },
   "videos": {
     "title": "マイ動画",
@@ -337,5 +338,9 @@
     "automotive": "照明: 薄暮のリムライト · カメラ: 低い位置からのトラッキングとボディの流れ · 質感: アドレナリン · 音楽: シネマティックパーカッション",
     "app-saas": "照明: モダンでブランドカラーを効かせた光 · カメラ: デバイスは静止、カメラが動く · 質感: 安心感 · 音楽: 明るいテックポップ",
     "event": "照明: ステージの光の波とフレア · カメラ: 観客のクローズアップ · 質感: 最高潮の熱気 · 音楽: フェスティバルEDM"
+  },
+  "meta": {
+    "title": "ReklamlarAI — AIで作る広告動画",
+    "description": "商品画像から数分でプロ品質の広告動画を生成。ナレーションと音楽付き。"
   }
 }

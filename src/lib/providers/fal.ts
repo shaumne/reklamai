@@ -17,6 +17,10 @@ class FalProvider implements GenerationProvider {
     return { requestId: request_id };
   }
 
+  async cancelJob(modelRef: string, requestId: string): Promise<void> {
+    await fal.queue.cancel(modelRef, { requestId });
+  }
+
   async checkJob(modelRef: string, requestId: string): Promise<JobStatusResult> {
     const status = await fal.queue.status(modelRef, { requestId, logs: false });
 

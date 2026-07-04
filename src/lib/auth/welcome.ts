@@ -3,6 +3,12 @@ import { headers } from "next/headers";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { WELCOME_CREDITS } from "@/lib/credits";
 
+async function hashOf(value: string): Promise<string> {
+  return createHmac("sha256", process.env.CRON_SECRET ?? "reklamlarai")
+    .update(value)
+    .digest("hex");
+}
+
 export async function clientIpHash(): Promise<string> {
   const h = await headers();
   // platform-set headers only — x-forwarded-for's leftmost entry can be
@@ -22,7 +28,13 @@ export async function clientIpHash(): Promise<string> {
 // already spawned too many accounts in the window. Idempotent per user.
 export async function maybeGrantWelcome(userId: string): Promise<boolean> {
   const admin = createAdminClient();
-  const ipHash = await clientIpHash();
+  let ipHash = await clientIpHash();
+
+  // no resolvable client IP (local dev, exotic runtimes): don't funnel
+  // everyone into one shared bucket — key the row to the user instead
+  if (ipHash === (await hashOf("unknown"))) {
+    ipHash = await hashOf(`no-ip:${userId}`);
+  }
 
   const { data: allowed, error } = await admin.rpc("register_signup_guard", {
     p_ip_hash: ipHash,
