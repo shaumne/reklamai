@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { computeCredits, planAtLeast, type ModelCatalogRow, type PlanTier } from "@/lib/credits";
+import { planByTier } from "@/lib/billing/plans";
 import { categoryById } from "@/lib/ads/categories";
 import { directVideoPrompt } from "@/lib/ads/director";
 import { platformById } from "@/lib/ads/platforms";
@@ -86,6 +87,10 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
   }
   if (videoModel.durations && !videoModel.durations.includes(input.durationSeconds)) {
     return { ok: false, error: "INVALID_DURATION" };
+  }
+  const plan = planByTier(planTier);
+  if (plan && input.durationSeconds > plan.maxDurationSeconds) {
+    return { ok: false, error: "PLAN_DURATION" };
   }
   if (
     videoModel.aspect_ratios &&

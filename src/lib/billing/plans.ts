@@ -8,6 +8,7 @@ export type Plan = {
   rolloverMonths: number;
   seats: number;
   maxResolution: "720p" | "1080p" | "4k";
+  maxDurationSeconds: number;
   watermark: boolean;
   apiAccess: boolean;
   highlight?: boolean;
@@ -21,6 +22,7 @@ export const PLANS: Plan[] = [
     rolloverMonths: 0,
     seats: 1,
     maxResolution: "720p",
+    maxDurationSeconds: 6,
     watermark: true,
     apiAccess: false,
   },
@@ -31,6 +33,7 @@ export const PLANS: Plan[] = [
     rolloverMonths: 1,
     seats: 1,
     maxResolution: "1080p",
+    maxDurationSeconds: 10,
     watermark: false,
     apiAccess: false,
     highlight: true,
@@ -42,6 +45,7 @@ export const PLANS: Plan[] = [
     rolloverMonths: 2,
     seats: 3,
     maxResolution: "4k",
+    maxDurationSeconds: 12,
     watermark: false,
     apiAccess: true,
   },
@@ -52,6 +56,7 @@ export const PLANS: Plan[] = [
     rolloverMonths: 2,
     seats: 10,
     maxResolution: "4k",
+    maxDurationSeconds: 12,
     watermark: false,
     apiAccess: true,
   },

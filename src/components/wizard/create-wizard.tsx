@@ -31,6 +31,7 @@ import {
 } from "@/lib/ads/categories";
 import { PLATFORM_PRESETS, platformById } from "@/lib/ads/platforms";
 import { computeCredits, planAtLeast, type ModelCatalogRow, type PlanTier } from "@/lib/credits";
+import { planByTier } from "@/lib/billing/plans";
 import { Button } from "@/components/ui/button";
 import { Input, Textarea, Label } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -160,12 +161,17 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
     const intersected = base.filter((d) => platform.preferredDurations.includes(d));
     return intersected.length > 0 ? intersected : base;
   }, [selectedModel, platform]);
+  const planMaxDuration = planByTier(planTier)?.maxDurationSeconds ?? 12;
+  const allowedDurations = useMemo(
+    () => durationOptions.filter((d) => d <= planMaxDuration),
+    [durationOptions, planMaxDuration],
+  );
   // Falls back to the first valid option whenever the stored pick no longer
   // matches the current model/platform pairing, without needing an effect.
   const effectiveDurationSeconds =
-    durationSeconds !== null && durationOptions.includes(durationSeconds)
+    durationSeconds !== null && allowedDurations.includes(durationSeconds)
       ? durationSeconds
-      : (durationOptions[0] ?? null);
+      : (allowedDurations[0] ?? null);
 
   const ttsModels = useMemo(() => models.filter((m) => m.kind === "tts"), [models]);
   const musicModels = useMemo(() => models.filter((m) => m.kind === "music"), [models]);
@@ -561,24 +567,37 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
               <div className="mt-5">
                 <Label>{t("duration")}</Label>
                 <div className="flex flex-wrap gap-2">
-                  {durationOptions.map((d) => (
-                    <button
-                      key={d}
-                      type="button"
-                      onClick={() => setDurationSeconds(d)}
-                      className={cn(
-                        "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors duration-150",
-                        "hover:border-flame-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-500 active:scale-[0.97]",
-                        effectiveDurationSeconds === d
-                          ? "border-flame-500 bg-flame-500 text-white"
-                          : "border-ink-200 bg-white text-ink-700",
-                      )}
-                    >
-                      {d}
-                      {t("seconds")}
-                    </button>
-                  ))}
+                  {durationOptions.map((d) => {
+                    const durationLocked = d > planMaxDuration;
+                    return (
+                      <button
+                        key={d}
+                        type="button"
+                        disabled={durationLocked}
+                        onClick={() => setDurationSeconds(d)}
+                        className={cn(
+                          "inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors duration-150",
+                          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-500",
+                          durationLocked
+                            ? "cursor-not-allowed border-ink-100 bg-ink-50 text-ink-300"
+                            : "hover:border-flame-300 active:scale-[0.97]",
+                          !durationLocked && effectiveDurationSeconds === d
+                            ? "border-flame-500 bg-flame-500 text-white"
+                            : !durationLocked
+                              ? "border-ink-200 bg-white text-ink-700"
+                              : "",
+                        )}
+                      >
+                        {durationLocked && <Lock className="size-3.5" />}
+                        {d}
+                        {t("seconds")}
+                      </button>
+                    );
+                  })}
                 </div>
+                {durationOptions.some((d) => d > planMaxDuration) && (
+                  <p className="mt-2 text-xs text-ink-400">{t("durationLockedHint")}</p>
+                )}
               </div>
             )}
 

@@ -139,11 +139,15 @@ export default async function LandingPage({ params }: Props) {
               </div>
               <div className="p-4 sm:p-6">
                 <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-flame-500 via-flame-400 to-gold-400">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-                      <div className="ml-1 h-0 w-0 border-y-[10px] border-l-[16px] border-y-transparent border-l-white/90" />
-                    </div>
-                  </div>
+                  <video
+                    className="absolute inset-0 h-full w-full object-cover"
+                    src="/hero.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                  />
                 </div>
                 <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-ink-100">
                   <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-flame-500 to-gold-400" />
