@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ReklamAI
 
-## Getting Started
+AI destekli reklam videosu stüdyosu. İşletmeler ürün görsellerinden veya kısa bir
+açıklamadan, sektörlerine özel kurguyla saniyeler içinde reklam videosu üretir;
+isteğe bağlı seslendirme ve müzik eklenir.
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router) + TypeScript + Tailwind CSS
+- Supabase — auth, Postgres (RLS), storage, realtime
+- fal.ai — video / görsel / TTS / müzik üretimi (queue + webhook)
+- Polar — abonelik ve kredi paketi satışı (Stripe adaptörü de mevcut)
+- next-intl — TR/EN
+
+## Geliştirme
 
 ```bash
+npm install
+cp .env.example .env.local   # değerleri doldurun
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Veritabanı şeması `supabase/migrations/` altında; sırasıyla çalıştırın.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Mimari notlar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Video üretimi asenkron: iş fal.ai kuyruğuna webhook URL'siyle gönderilir,
+  tamamlanınca `/api/webhooks/fal` çıktıyı Supabase Storage'a taşır.
+- Krediler append-only bir defterde tutulur; rezerv/harcama/iade işlemleri
+  `SECURITY DEFINER` RPC'lerle atomiktir, başarısız üretimler otomatik iade edilir.
+- Model fiyatları `model_catalog` tablosunda sunucu tarafında tutulur;
+  istemciden gelen maliyet değerlerine güvenilmez.
+- `/api/cron/reconcile` takılı işleri süpürür (kaçan webhook telafisi).
