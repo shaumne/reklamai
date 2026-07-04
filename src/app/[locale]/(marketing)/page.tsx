@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
+import { HeroPlayer } from "@/components/marketing/hero-player";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -137,33 +138,7 @@ export default async function LandingPage({ params }: Props) {
                 <span className="h-2.5 w-2.5 rounded-full bg-gold-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-moss-500/70" />
               </div>
-              <div className="p-4 sm:p-6">
-                <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-flame-500 via-flame-400 to-gold-400">
-                  <video
-                    className="absolute inset-0 h-full w-full object-cover"
-                    src="/hero.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                  />
-                </div>
-                <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-ink-100">
-                  <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-flame-500 to-gold-400" />
-                </div>
-                <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                  <span className="rounded-full border border-ink-200 px-3 py-1 text-xs font-medium text-ink-600">
-                    16:9
-                  </span>
-                  <span className="rounded-full border border-ink-200 px-3 py-1 text-xs font-medium text-ink-600">
-                    9:16
-                  </span>
-                  <span className="rounded-full border border-ink-200 px-3 py-1 text-xs font-medium text-ink-600">
-                    1:1
-                  </span>
-                </div>
-              </div>
+              <HeroPlayer />
             </div>
           </div>
         </div>
