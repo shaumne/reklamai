@@ -17,14 +17,20 @@ export const polarProvider: PaymentProvider = {
     if (!productId) throw new Error(`no polar product configured for ${args.productKey}`);
 
     const polar = polarClient();
-    const session = await polar.checkouts.create({
+    const base = {
       products: [productId],
       externalCustomerId: args.userId,
-      customerEmail: args.email,
       successUrl: args.successUrl,
       metadata: { user_id: args.userId, product_key: args.productKey },
-    });
-    return session.url;
+    };
+    try {
+      const session = await polar.checkouts.create({ ...base, customerEmail: args.email });
+      return session.url;
+    } catch {
+      // e.g. Polar rejects the email domain — let checkout collect it instead
+      const session = await polar.checkouts.create(base);
+      return session.url;
+    }
   },
 
   async customerPortalUrl(userId: string, returnUrl: string): Promise<string | null> {
