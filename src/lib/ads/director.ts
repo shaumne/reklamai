@@ -48,11 +48,10 @@ export async function directVideoPrompt(args: {
   try {
     const client = new Anthropic({ timeout: 25_000, maxRetries: 1 });
     const response = await client.messages.create({
-      model: "claude-opus-4-8",
+      model: "claude-haiku-4-5",
       max_tokens: 700,
       system: DIRECTOR_SYSTEM,
       output_config: {
-        effort: "low",
         format: { type: "json_schema", schema: OUTPUT_SCHEMA },
       },
       messages: [
