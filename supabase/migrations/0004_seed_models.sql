@@ -8,9 +8,9 @@ insert into public.model_catalog
    native_audio, durations, aspect_ratios, min_plan, enabled, sort, notes)
 values
   -- ---- text-to-video ----
-  ('wan-25', 'fal-ai/wan-pro', 'video_t2v', 'budget', 'WAN 2.5',
+  ('wan-25', 'fal-ai/wan-25-preview/text-to-video', 'video_t2v', 'budget', 'WAN 2.5',
    'second', 0.050000, null, false, array[5, 10], array['16:9', '9:16', '1:1'],
-   'free', true, 10, '1080p native, budget tier'),
+   'free', true, 10, '720p budget tier, $0.05/s verified'),
 
   ('kling-25-turbo-t2v', 'fal-ai/kling-video/v2.5-turbo/pro/text-to-video', 'video_t2v', 'standard', 'Kling 2.5 Turbo',
    'second', 0.070000, null, false, array[5, 10], array['16:9', '9:16', '1:1'],
@@ -28,9 +28,9 @@ values
    'second', 0.241900, null, true, array[5, 10], array['16:9', '9:16', '1:1'],
    'starter', false, 50, 'verify id+price before enabling; native audio'),
 
-  ('ltx-2-t2v', 'fal-ai/ltx-video', 'video_t2v', 'budget', 'LTX 2',
-   'second', 0.040000, null, false, array[5, 10], array['16:9', '9:16'],
-   'free', false, 15, 'verify id+price before enabling'),
+  ('ltx-2-t2v', 'fal-ai/ltx-2/text-to-video', 'video_t2v', 'budget', 'LTX 2',
+   'second', 0.060000, null, false, array[5, 10], array['16:9', '9:16'],
+   'free', true, 15, '1080p at $0.06/s verified'),
 
   -- ---- image-to-video ----
   ('kling-21-std-i2v', 'fal-ai/kling-video/v2.1/standard/image-to-video', 'video_i2v', 'budget', 'Kling 2.1',
