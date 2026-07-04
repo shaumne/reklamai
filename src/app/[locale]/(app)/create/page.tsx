@@ -27,7 +27,6 @@ export default async function CreatePage({
     supabase
       .from("model_catalog")
       .select("*")
-      .eq("enabled", true)
       .order("sort", { ascending: true }),
   ]);
 

@@ -177,8 +177,16 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
       ? durationSeconds
       : (allowedDurations[0] ?? null);
 
-  const ttsModels = useMemo(() => models.filter((m) => m.kind === "tts"), [models]);
-  const musicModels = useMemo(() => models.filter((m) => m.kind === "music"), [models]);
+  const ttsModels = useMemo(
+    () => models.filter((m) => m.kind === "tts" && m.enabled),
+    [models],
+  );
+  const musicModels = useMemo(
+    () => models.filter((m) => m.kind === "music" && m.enabled),
+    [models],
+  );
+  const musicComingSoon =
+    musicModels.length === 0 && models.some((m) => m.kind === "music" && !m.enabled);
   const effectiveVoiceoverModelId = voiceover.modelId || ttsModels[0]?.id || "";
   const effectiveMusicModelId = music.modelId || musicModels[0]?.id || "";
   const selectedTtsModel = useMemo(
@@ -591,7 +599,8 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
             <h3 className="mb-3 text-sm font-semibold text-ink-900">{t("modelTitle")}</h3>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {availableModels.map((m) => {
-                const locked = !planAtLeast(planTier, m.min_plan);
+                const comingSoon = !m.enabled;
+                const locked = !comingSoon && !planAtLeast(planTier, m.min_plan);
                 const isSelected = modelId === m.id;
                 const previewDuration = effectiveDurationSeconds ?? m.durations?.[0] ?? 5;
                 const credits = computeCredits({
@@ -603,21 +612,27 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
                   <button
                     key={m.id}
                     type="button"
-                    disabled={locked}
+                    disabled={locked || comingSoon}
                     aria-pressed={isSelected}
                     onClick={() => setModelId(m.id)}
-                    className={selectableCardClasses(isSelected, locked)}
+                    className={selectableCardClasses(isSelected, locked || comingSoon)}
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <Badge tone={isSelected ? "flame" : "neutral"}>{TIER_LABELS[m.tier]}</Badge>
-                      {locked ? (
+                      <Badge tone={comingSoon ? "gold" : isSelected ? "flame" : "neutral"}>
+                        {TIER_LABELS[m.tier]}
+                      </Badge>
+                      {comingSoon ? null : locked ? (
                         <Lock className="size-4 text-ink-400" />
                       ) : isSelected ? (
                         <Check className="size-4 text-flame-500" />
                       ) : null}
                     </div>
                     <p className="mt-3 text-sm font-semibold text-ink-900">{m.label}</p>
-                    {locked ? (
+                    {comingSoon ? (
+                      <p className="mt-1 text-xs font-semibold text-gold-500">
+                        {tCommon("comingSoon")}
+                      </p>
+                    ) : locked ? (
                       <p className="mt-1 text-xs text-ink-500">
                         {t("planLocked", { plan: PLAN_LABELS[m.min_plan] })}
                       </p>
@@ -788,6 +803,21 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
                 </CardContent>
               </Card>
             )}
+          </div>
+        )}
+
+        {musicComingSoon && (
+          <div className="flex items-center justify-between rounded-2xl border border-ink-100 bg-ink-50 p-4 opacity-80">
+            <div className="flex items-center gap-3">
+              <span className="flex size-9 items-center justify-center rounded-xl bg-ink-100 text-ink-400">
+                <MusicIcon className="size-4" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-ink-500">{t("musicTitle")}</p>
+                <p className="text-xs text-ink-400">{t("musicDesc")}</p>
+              </div>
+            </div>
+            <Badge tone="gold">{tCommon("comingSoon")}</Badge>
           </div>
         )}
 
