@@ -8,6 +8,7 @@ import {
   Film,
   UploadCloud,
   CircleCheckBig,
+  Clapperboard,
   Lock,
   Check,
   TriangleAlert,
@@ -95,6 +96,8 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
   const tLanding = useTranslations("landing");
   const tCategories = useTranslations("categories");
   const tGroups = useTranslations("categoryGroups");
+  const tCatDesc = useTranslations("categoryDesc");
+  const tCatEffect = useTranslations("categoryEffect");
   const tPlatforms = useTranslations("platforms");
   const router = useRouter();
 
@@ -109,6 +112,7 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
   const [description, setDescription] = useState("");
   const [campaign, setCampaign] = useState("");
   const [categoryId, setCategoryId] = useState<string | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<CategoryGroup | "all">("all");
   const [platformId, setPlatformId] = useState<string | null>(null);
   const [modelId, setModelId] = useState<string | null>(null);
   const [durationSeconds, setDurationSeconds] = useState<number | null>(null);
@@ -474,29 +478,93 @@ export function CreateWizard({ models, balance, planTier, locale }: CreateWizard
 
         <div>
           <h3 className="mb-3 text-sm font-semibold text-ink-900">{t("categoryTitle")}</h3>
-          <div className="space-y-5">
-            {categoryGroups.map(([group, cats]) => (
-              <div key={group}>
-                <p className="mb-2 text-xs font-semibold tracking-wide text-ink-400 uppercase">
-                  {tGroups(group)}
-                </p>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                  {cats.map((cat) => {
-                    const Icon = getDomainIcon(cat.icon);
-                    return (
-                      <SelectableCard
-                        key={cat.id}
-                        selected={categoryId === cat.id}
-                        onClick={() => setCategoryId(cat.id)}
-                        icon={<Icon className="size-4" />}
-                        title={tCategories(cat.id)}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
+
+          <div className="mb-4 flex flex-wrap gap-2">
+            {(["all", ...categoryGroups.map(([g]) => g)] as const).map((group) => (
+              <button
+                key={group}
+                type="button"
+                onClick={() => setCategoryFilter(group)}
+                aria-pressed={categoryFilter === group}
+                className={cn(
+                  "rounded-full border px-3.5 py-1.5 text-xs font-semibold transition-colors duration-150",
+                  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-500 active:scale-[0.97]",
+                  categoryFilter === group
+                    ? "border-ink-900 bg-ink-900 text-ink-50"
+                    : "border-ink-200 bg-white text-ink-600 hover:border-ink-400 hover:text-ink-900",
+                )}
+              >
+                {group === "all" ? t("categoryAll") : tGroups(group)}
+              </button>
             ))}
           </div>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {AD_CATEGORIES.filter(
+              (cat) => categoryFilter === "all" || cat.group === categoryFilter,
+            ).map((cat) => {
+              const Icon = getDomainIcon(cat.icon);
+              const isSelected = categoryId === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setCategoryId(cat.id)}
+                  aria-pressed={isSelected}
+                  className={cn(
+                    "relative flex items-start gap-3 rounded-2xl border p-4 text-left",
+                    "transition-[transform,box-shadow,border-color,background-color] duration-200",
+                    "hover:-translate-y-0.5 hover:shadow-(--shadow-lift)",
+                    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-flame-500 active:scale-[0.98]",
+                    isSelected
+                      ? "border-flame-500 bg-flame-50 ring-2 ring-flame-500"
+                      : "border-ink-200 bg-white",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "flex size-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-200",
+                      isSelected ? "bg-flame-500 text-white" : "bg-flame-100 text-flame-700",
+                    )}
+                  >
+                    <Icon className="size-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-ink-900">
+                      {tCategories(cat.id)}
+                    </span>
+                    <span className="mt-0.5 block text-xs leading-relaxed text-ink-500">
+                      {tCatDesc(cat.id)}
+                    </span>
+                  </span>
+                  {isSelected && (
+                    <span className="absolute top-3 right-3 flex size-5 items-center justify-center rounded-full bg-flame-500">
+                      <Check className="size-3 text-white" />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {categoryId && (
+            <div className="dark-surface animate-rise mt-4 overflow-hidden rounded-2xl p-4 sm:p-5">
+              <div className="relative z-10 flex items-start gap-3">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-flame-500/20 text-flame-300">
+                  <Clapperboard className="size-4.5" />
+                </span>
+                <div>
+                  <p className="text-xs font-semibold tracking-wide text-flame-300 uppercase">
+                    {t("categoryEffectTitle")}
+                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink-100">
+                    {tCatEffect(categoryId)}
+                  </p>
+                  <p className="mt-1.5 text-xs text-ink-300">{t("categoryAiNote")}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div>

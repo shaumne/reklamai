@@ -68,6 +68,7 @@ export async function directVideoPrompt(args: {
               lighting: args.category.lighting,
               camera: args.category.camera,
             },
+            craft_notes: args.category.directorNotes,
             duration_seconds: args.durationSeconds,
             aspect_ratio: args.aspectRatio,
             platform: args.platformId,

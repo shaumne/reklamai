@@ -213,7 +213,10 @@
     "errINPUT_MEDIA_REQUIRED": "Please upload an image or video.",
     "errGeneric": "Something went wrong. Please try again.",
     "errPLAN_DURATION": "This video length requires a higher plan.",
-    "durationLockedHint": "Upgrade your plan for longer videos"
+    "durationLockedHint": "Upgrade your plan for longer videos",
+    "categoryEffectTitle": "How this choice shapes your video",
+    "categoryAll": "All",
+    "categoryAiNote": "The AI director adapts this recipe to your product"
   },
   "videos": {
     "title": "My videos",
@@ -298,5 +301,37 @@
     "feed-square-desc": "Square 1:1",
     "web-landscape": "Website",
     "web-landscape-desc": "Landscape 16:9"
+  },
+  "categoryDesc": {
+    "ecommerce-jewelry": "Macro sparkle, luxury feel",
+    "ecommerce-fashion": "Motion, editorial attitude",
+    "ecommerce-beauty": "Texture macros, dewy glow",
+    "ecommerce-electronics": "Precision moves, tech light",
+    "ecommerce-home": "Warm lived-in feel",
+    "ecommerce-food": "Steam, first-bite appeal",
+    "service-restaurant": "Fire, craft, table joy",
+    "service-salon": "Transformation reveal",
+    "service-fitness": "Sweat, grit, motivation",
+    "service-clinic": "Calm trust, clean light",
+    "realestate": "Gliding wide spaces",
+    "automotive": "Light sweeps, wet asphalt",
+    "app-saas": "Problem-to-relief story",
+    "event": "Crowd energy, hype"
+  },
+  "categoryEffect": {
+    "ecommerce-jewelry": "Light: low-key golden · Camera: slow macro orbit · Feel: luxurious, intimate · Music: minimal piano",
+    "ecommerce-fashion": "Light: golden-hour contrast · Camera: tracking + handheld energy · Feel: confident, editorial · Music: runway electronic",
+    "ecommerce-beauty": "Light: soft shadowless studio · Camera: slow-motion macro · Feel: fresh, radiant · Music: airy pop",
+    "ecommerce-electronics": "Light: cool edge lighting · Camera: robotic precision · Feel: powerful, futuristic · Music: tech bass",
+    "ecommerce-home": "Light: morning window · Camera: gliding gimbal · Feel: warm, inviting · Music: acoustic guitar",
+    "ecommerce-food": "Light: steam-revealing backlight · Camera: 30-45° hero angle · Feel: appetizing · Music: playful jazz",
+    "service-restaurant": "Light: candle + kitchen flame · Camera: lively kitchen, calm dining · Feel: warm, premium · Music: latin jazz",
+    "service-salon": "Light: flattering soft · Camera: built to the mirror reveal · Feel: transformation · Music: empowering pop",
+    "service-fitness": "Light: hazy side beams · Camera: heroic low angles · Feel: raw grit · Music: motivational trap",
+    "service-clinic": "Light: clean with warm accents · Camera: steady and calm · Feel: trust · Music: serene piano",
+    "realestate": "Light: golden hour + airy interiors · Camera: one continuous glide · Feel: prestige, space · Music: cinematic orchestra",
+    "automotive": "Light: dusk rim light · Camera: low tracking + body sweep · Feel: adrenaline · Music: cinematic percussion",
+    "app-saas": "Light: modern, brand-accented · Camera: device still, camera moves · Feel: relief · Music: optimistic tech-pop",
+    "event": "Light: stage washes, flares · Camera: crowd close-ups · Feel: peak energy · Music: festival EDM"
   }
 }

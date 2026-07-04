@@ -25,6 +25,7 @@ export type AdCategory = {
   camera: string;
   musicStyle: string;
   voiceoverTemplate: { tr: string; en: string };
+  directorNotes: string;
 };
 
 export const AD_CATEGORIES: AdCategory[] = [
@@ -46,6 +47,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "{product}. Zarafetin en saf hali. {campaign} Şimdi keşfedin.",
       en: "{product}. Elegance in its purest form. {campaign} Discover it now.",
     },
+    directorNotes:
+      "Sell desire, not the object. Light must move: always animate a specular sweep traveling across facets or metal. Skin contact (wrist, collarbone, fingers) doubles perceived value versus flat-lay. The piece fills 40-70% of the frame; never wide establishing shots. Palette: deep blacks and warm candlelight golds, never a plain white e-commerce background. End with the piece perfectly still, light breathing on it.",
   },
   {
     id: "ecommerce-fashion",
@@ -65,6 +68,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Tarzını konuştur. {product} ile her an podyum. {campaign}",
       en: "Let your style speak. Every moment is a runway with {product}. {campaign}",
     },
+    directorNotes:
+      "Fabric in motion is the product: wind, a turn, a step - the garment must move within the first second. Golden hour or hard editorial flash, never flat retail lighting. Low angles lengthen silhouettes. One garment, one look - never a montage of outfits in a short cut. Confidence over smiles: model gaze past camera.",
   },
   {
     id: "ecommerce-beauty",
@@ -84,6 +89,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Cildinin ışıltısını ortaya çıkar. {product}. {campaign}",
       en: "Reveal your natural glow. {product}. {campaign}",
     },
+    directorNotes:
+      "Texture macro sells: cream swirl, serum droplet crown, pigment burst in slow motion. Dewy skin highlights, never matte. Pastel or warm-neutral backdrop with soft shadowless key light. Show the ritual of application on real skin for trust. Fluid dynamics beat faces in short cuts.",
   },
   {
     id: "ecommerce-electronics",
@@ -103,6 +110,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Gücü elinde hisset. {product}. {campaign} Teknolojinin yeni standardı.",
       en: "Feel the power. {product}. {campaign} The new standard in tech.",
     },
+    directorNotes:
+      "Precision language: perfect symmetry, controlled robotic camera moves, edge-lit silhouettes. A light sweep reveals ports, textures, materials. Cool white-blue palette with one accent color taken from the product. Float or rotate the device on a dark reflective surface. No hands unless demonstrating scale.",
   },
   {
     id: "ecommerce-home",
@@ -122,6 +131,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Evini yuvaya dönüştür. {product}. {campaign}",
       en: "Turn your house into a home. {product}. {campaign}",
     },
+    directorNotes:
+      "Sell the feeling of home: morning window light, dust motes, steam from a mug near the product. The product sits styled in a lived-in corner, never isolated on white. Warm timber-and-linen palette. A slow gimbal push through a doorway creates invitation. Human presence implied, no faces needed.",
   },
   {
     id: "ecommerce-food",
@@ -141,6 +152,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Damaklarda şölen. {product}. {campaign} Şimdi sipariş ver.",
       en: "A feast for the senses. {product}. {campaign} Order now.",
     },
+    directorNotes:
+      "Appetite triggers are non-negotiable: steam rising through backlight, glisten, melt, char texture, the pull-apart or first-bite moment. Use a 30-45 degree hero angle; overhead only for spreads. Warm tungsten palette on dark rustic surfaces. Imperfection sells taste - never an untouched, sterile plate.",
   },
   {
     id: "service-restaurant",
@@ -160,6 +173,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Her tabak bir hikaye. {product}. {campaign} Masanız hazır.",
       en: "Every plate tells a story. {product}. {campaign} Your table is ready.",
     },
+    directorNotes:
+      "Fire and human craft: flames licking a pan, a chef's precise gesture, the plating drop. Contrast kitchen energy (handheld warmth, motion) with dining-room calm (slow glide, candlelight). End at the table, not the kitchen - the guest's seat is the product.",
   },
   {
     id: "service-salon",
@@ -179,6 +194,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Yeni sen, seni bekliyor. {product}. {campaign} Randevunu al.",
       en: "The new you is waiting. {product}. {campaign} Book your appointment.",
     },
+    directorNotes:
+      "The reveal is everything: build toward the mirror moment. Detail shots of craft - scissor precision, brush strokes, foil work - earn trust. Flattering soft frontal light, no clinical overheads. Finish on confidence walking out, hair or nails in motion.",
   },
   {
     id: "service-fitness",
@@ -198,6 +215,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Sınırlarını zorla. {product}. {campaign} Bugün başla.",
       en: "Push your limits. {product}. {campaign} Start today.",
     },
+    directorNotes:
+      "Grit texture: chalk dust hanging in light shafts, sweat highlights, iron in motion. Dramatic side light through haze. Low angles make athletes heroic. Show the effort face, then a triumph micro-moment. Cold steel-blue palette against warm skin tones.",
   },
   {
     id: "service-clinic",
@@ -217,6 +236,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Sağlığınız güvenli ellerde. {product}. {campaign}",
       en: "Your health, in trusted hands. {product}. {campaign}",
     },
+    directorNotes:
+      "Trust through calm: slow, steady camera only - no handheld. Bright clean light softened with warm accents; greenery or wood breaks the sterility. Attentive human interaction (a reassuring nod, a guiding hand) beats equipment shots. Palette: whites, soft blues, warm skin.",
   },
   {
     id: "realestate",
@@ -236,6 +257,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Hayalinizdeki yaşam burada başlıyor. {product}. {campaign}",
       en: "The life you imagined starts here. {product}. {campaign}",
     },
+    directorNotes:
+      "Space is the product: wide lenses and one continuous gliding move per shot - through a doorway, along floor-to-ceiling glass. Golden-hour exteriors, bright airy interiors with gentle window bloom. A lifestyle vignette (coffee on the balcony) anchors emotion. Vertical lines stay vertical.",
   },
   {
     id: "automotive",
@@ -255,6 +278,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Yol senin. {product}. {campaign} Test sürüşü için hazır mısın?",
       en: "The road is yours. {product}. {campaign} Ready for a test drive?",
     },
+    directorNotes:
+      "Light defines bodywork: one continuous specular sweep along the beltline outsells any montage. Wet asphalt reflections, dusk sky, dramatic rim light. A low tracking shot conveys speed even when parked. Wheels and badge deserve macro moments. Never crop the silhouette awkwardly.",
   },
   {
     id: "app-saas",
@@ -274,6 +299,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Hayatını kolaylaştır. {product}. {campaign} Hemen indir.",
       en: "Make life easier. {product}. {campaign} Download now.",
     },
+    directorNotes:
+      "Problem-to-relief arc: one second of relatable friction, then the calm of the solution. Screen glow on a real face in a real context beats floating UI mockups. Bright modern light with the brand accent color. Keep the device static and move the camera. End on the user's relief, not the phone.",
   },
   {
     id: "event",
@@ -293,6 +320,8 @@ export const AD_CATEGORIES: AdCategory[] = [
       tr: "Kaçırılmayacak bir gece. {product}. {campaign} Biletini kap!",
       en: "A night to remember. {product}. {campaign} Grab your ticket!",
     },
+    directorNotes:
+      "Anticipation then payoff: lights warming up, crowd gathering, then peak energy - confetti, the drop moment, hands up. Lens flares and colored washes are the palette. Crowd-emotion close-ups sell tickets better than stage wides. End on a frame calm enough for a date overlay.",
   },
 ];
 

@@ -213,7 +213,10 @@
     "errINPUT_MEDIA_REQUIRED": "Lütfen bir görsel veya video yükleyin.",
     "errGeneric": "Bir hata oluştu. Lütfen tekrar deneyin.",
     "errPLAN_DURATION": "Bu video süresi daha üst bir plan gerektirir.",
-    "durationLockedHint": "Daha uzun videolar için planını yükselt"
+    "durationLockedHint": "Daha uzun videolar için planını yükselt",
+    "categoryEffectTitle": "Bu seçim videonu böyle şekillendirecek",
+    "categoryAll": "Tümü",
+    "categoryAiNote": "Yapay zeka yönetmen bu tarifi senin ürününe göre uyarlar"
   },
   "videos": {
     "title": "Videolarım",
@@ -298,5 +301,37 @@
     "feed-square-desc": "Kare 1:1",
     "web-landscape": "Web sitesi",
     "web-landscape-desc": "Yatay 16:9"
+  },
+  "categoryDesc": {
+    "ecommerce-jewelry": "Makro ışıltı, lüks doku",
+    "ecommerce-fashion": "Hareket, editoryal duruş",
+    "ecommerce-beauty": "Doku makroları, ışıltılı cilt",
+    "ecommerce-electronics": "Hassas kamera, teknolojik ışık",
+    "ecommerce-home": "Sıcak, yaşanmış ev hissi",
+    "ecommerce-food": "Buhar, ısırık anı, iştah",
+    "service-restaurant": "Ateş, şef eli, masa keyfi",
+    "service-salon": "Dönüşüm ve ayna anı",
+    "service-fitness": "Ter, güç, motivasyon",
+    "service-clinic": "Sakin güven, temiz ışık",
+    "realestate": "Akan geniş kadrajlar",
+    "automotive": "Işık süpürmesi, ıslak asfalt",
+    "app-saas": "Sorundan çözüme anlatı",
+    "event": "Kalabalık enerjisi, coşku"
+  },
+  "categoryEffect": {
+    "ecommerce-jewelry": "Işık: loş, altın vurgulu · Kamera: yavaş makro orbit · His: lüks ve mahrem · Müzik: minimal piyano",
+    "ecommerce-fashion": "Işık: gün batımı kontrastı · Kamera: takip + hafif el kamerası · His: özgüvenli, editoryal · Müzik: podyum elektroniği",
+    "ecommerce-beauty": "Işık: yumuşak, gölgesiz stüdyo · Kamera: ağır çekim makro · His: ferah, ışıltılı · Müzik: hafif pop",
+    "ecommerce-electronics": "Işık: soğuk kenar aydınlatması · Kamera: robotik hassas hareket · His: güçlü, fütüristik · Müzik: tekno bas",
+    "ecommerce-home": "Işık: pencere sabahı · Kamera: süzülen gimbal · His: sıcak, davetkâr · Müzik: akustik gitar",
+    "ecommerce-food": "Işık: buharı gösteren arka ışık · Kamera: 30-45° kahraman açı · His: iştah açıcı · Müzik: neşeli caz",
+    "service-restaurant": "Işık: mum + ocak alevi · Kamera: mutfakta canlı, salonda sakin · His: sıcak, premium · Müzik: latin caz",
+    "service-salon": "Işık: yüz güzelleştiren yumuşak · Kamera: ayna anına kurgu · His: dönüşüm, özgüven · Müzik: güçlendirici pop",
+    "service-fitness": "Işık: sisli yan ışık hüzmeleri · Kamera: alçak kahraman açılar · His: ham güç · Müzik: motivasyon trap",
+    "service-clinic": "Işık: temiz, sıcak dokunuşlu · Kamera: sabit ve sakin · His: güven · Müzik: dingin piyano",
+    "realestate": "Işık: altın saat + ferah iç mekân · Kamera: tek kesintisiz süzülme · His: prestij, genişlik · Müzik: sinematik orkestra",
+    "automotive": "Işık: alacakaranlık rim ışığı · Kamera: alçak takip + gövde süpürmesi · His: adrenalin · Müzik: sinematik perküsyon",
+    "app-saas": "Işık: modern, marka renkli · Kamera: cihaz sabit, kamera akar · His: rahatlama · Müzik: iyimser tech-pop",
+    "event": "Işık: sahne yıkamaları, flare · Kamera: kalabalık yakın planları · His: coşku patlaması · Müzik: festival EDM"
   }
 }
