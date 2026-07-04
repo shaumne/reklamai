@@ -1,26 +1,145 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* brand: warm ink + flame + gold on cream paper */
+  --color-flame-50: #fff4f0;
+  --color-flame-100: #ffe5dc;
+  --color-flame-200: #ffc9b8;
+  --color-flame-300: #ffa58a;
+  --color-flame-400: #ff7551;
+  --color-flame-500: #ff4d2b;
+  --color-flame-600: #e83d1c;
+  --color-flame-700: #c23115;
+  --color-flame-800: #9a2913;
+  --color-flame-900: #7a2312;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-ink-50: #f7f3ee;
+  --color-ink-100: #ede7e1;
+  --color-ink-200: #d8cfc8;
+  --color-ink-300: #b3a79f;
+  --color-ink-400: #8c7f77;
+  --color-ink-500: #6b5f58;
+  --color-ink-600: #4f453f;
+  --color-ink-700: #3a322e;
+  --color-ink-800: #262019;
+  --color-ink-900: #191412;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-gold-100: #fdf0dc;
+  --color-gold-300: #f6c87e;
+  --color-gold-400: #f0a83b;
+  --color-gold-500: #dd9527;
+
+  --color-moss-100: #e3f1e9;
+  --color-moss-500: #3e9b6b;
+  --color-moss-700: #2c7550;
+
+  --color-danger-100: #fbe4e4;
+  --color-danger-500: #d64545;
+  --color-danger-700: #a83232;
+
+  --color-paper: #faf7f2;
+
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  /* layered, color-tinted shadows */
+  --shadow-lift:
+    0 1px 2px rgba(25, 20, 18, 0.05),
+    0 4px 12px rgba(194, 49, 21, 0.06),
+    0 12px 32px rgba(25, 20, 18, 0.07);
+  --shadow-lift-lg:
+    0 2px 4px rgba(25, 20, 18, 0.06),
+    0 12px 24px rgba(194, 49, 21, 0.08),
+    0 32px 64px rgba(25, 20, 18, 0.12);
+  --shadow-glow: 0 0 0 1px rgba(255, 77, 43, 0.12), 0 8px 32px rgba(255, 77, 43, 0.24);
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.55;
+    }
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+/* multi-layer radial gradient + grain hero background */
+.hero-surface {
+  position: relative;
+  background:
+    radial-gradient(1200px 640px at 85% -10%, rgba(255, 77, 43, 0.16), transparent 60%),
+    radial-gradient(900px 520px at -10% 20%, rgba(240, 168, 59, 0.14), transparent 55%),
+    radial-gradient(700px 700px at 50% 120%, rgba(122, 35, 18, 0.1), transparent 60%),
+    var(--color-paper);
+}
+
+.hero-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.dark-surface {
+  position: relative;
+  background:
+    radial-gradient(1000px 500px at 80% 0%, rgba(255, 77, 43, 0.14), transparent 55%),
+    radial-gradient(800px 480px at 10% 100%, rgba(240, 168, 59, 0.08), transparent 55%),
+    var(--color-ink-900);
+  color: var(--color-ink-50);
+}
+
+.dark-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--color-flame-200);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-flame-500);
+  outline-offset: 2px;
 }

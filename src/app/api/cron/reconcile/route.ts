@@ -14,7 +14,8 @@ const BATCH = 10;
 // Covers missed webhooks and local development (where fal cannot call back).
 export async function GET(request: Request) {
   const auth = request.headers.get("authorization");
-  if (process.env.CRON_SECRET && auth !== `Bearer ${process.env.CRON_SECRET}`) {
+  const secret = process.env.CRON_SECRET;
+  if (!secret || auth !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 

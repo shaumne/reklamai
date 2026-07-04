@@ -52,17 +52,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, deduped: true });
   }
 
-  const generationId = new URL(request.url).searchParams.get("generation_id");
-  const { data: generation } = await supabase
+  const UUID_RE =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  const generationIdParam = new URL(request.url).searchParams.get("generation_id");
+  const generationId =
+    generationIdParam && UUID_RE.test(generationIdParam) ? generationIdParam : null;
+
+  let { data: generation } = await supabase
     .from("generations")
     .select("id, user_id, kind, status")
-    .or(
-      generationId
-        ? `fal_request_id.eq.${requestId},id.eq.${generationId}`
-        : `fal_request_id.eq.${requestId}`,
-    )
-    .limit(1)
-    .single();
+    .eq("fal_request_id", requestId)
+    .maybeSingle();
+
+  if (!generation && generationId) {
+    const { data: byId } = await supabase
+      .from("generations")
+      .select("id, user_id, kind, status")
+      .eq("id", generationId)
+      .maybeSingle();
+    generation = byId;
+  }
 
   if (!generation) {
     await supabase
