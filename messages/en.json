@@ -136,7 +136,9 @@
     "genericError": "Something went wrong. Please try again.",
     "passwordHint": "At least 8 characters",
     "continueWithGoogle": "Continue with Google",
-    "orDivider": "or"
+    "orDivider": "or",
+    "errEmailDomain": "Disposable email addresses are not accepted. Please use a permanent address.",
+    "errEmailTaken": "An account with this email already exists."
   },
   "dashboard": {
     "title": "Dashboard",

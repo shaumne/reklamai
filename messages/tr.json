@@ -136,7 +136,9 @@
     "genericError": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
     "passwordHint": "En az 8 karakter",
     "continueWithGoogle": "Google ile devam et",
-    "orDivider": "veya"
+    "orDivider": "veya",
+    "errEmailDomain": "Geçici e-posta adresleri kabul edilmiyor. Lütfen kalıcı bir adres kullanın.",
+    "errEmailTaken": "Bu e-posta ile zaten bir hesap var."
   },
   "dashboard": {
     "title": "Panel",

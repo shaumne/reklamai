@@ -4,6 +4,7 @@ import { useState, type FormEvent } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { registerUser } from "@/lib/actions/register";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
@@ -18,46 +19,45 @@ export function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [pending, setPending] = useState(false);
-  const [error, setError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
-    setError(false);
+    setError(null);
 
-    const supabase = createClient();
-    const { data, error: signUpError } = await supabase.auth.signUp({
+    const result = await registerUser({
+      name,
       email,
       password,
-      options: {
-        data: { display_name: name, locale },
-        emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
-      },
+      locale: locale === "en" ? "en" : "tr",
     });
 
-    if (signUpError) {
-      setError(true);
+    if (!result.ok) {
+      setError(
+        result.error === "EMAIL_DOMAIN"
+          ? t("errEmailDomain")
+          : result.error === "EMAIL_TAKEN"
+            ? t("errEmailTaken")
+            : t("genericError"),
+      );
       setPending(false);
       return;
     }
 
-    if (data.session) {
-      router.push("/dashboard");
-      router.refresh();
+    const supabase = createClient();
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (signInError) {
+      setError(t("genericError"));
+      setPending(false);
       return;
     }
 
-    setSubmitted(true);
-    setPending(false);
-  }
-
-  if (submitted) {
-    return (
-      <div className="rounded-xl bg-moss-100 p-4 text-sm text-moss-700" role="status">
-        {t("confirmEmailSent")}
-      </div>
-    );
+    router.push("/dashboard");
+    router.refresh();
   }
 
   return (
@@ -66,7 +66,7 @@ export function RegisterForm() {
       <form onSubmit={handleSubmit} className="space-y-4">
       {error && (
         <div className="rounded-xl bg-danger-100 p-3 text-sm text-danger-700" role="alert">
-          {t("genericError")}
+          {error}
         </div>
       )}
 
