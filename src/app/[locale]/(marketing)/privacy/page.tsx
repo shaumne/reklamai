@@ -27,7 +27,7 @@ const content = {
       },
       {
         heading: "İletişim",
-        body: "Gizlilikle ilgili sorularınız veya talepleriniz için bize privacy@reklamai.com adresinden ulaşabilirsiniz.",
+        body: "Gizlilikle ilgili sorularınız veya talepleriniz için bize privacy@reklamlarai.com adresinden ulaşabilirsiniz.",
       },
     ],
   },
@@ -53,7 +53,33 @@ const content = {
       },
       {
         heading: "Contact",
-        body: "For any privacy-related questions or requests, you can reach us at privacy@reklamai.com.",
+        body: "For any privacy-related questions or requests, you can reach us at privacy@reklamlarai.com.",
+      },
+    ],
+  },
+  ja: {
+    title: "プライバシーポリシー",
+    updated: "最終更新日: 2026年7月4日",
+    sections: [
+      {
+        heading: "収集する情報",
+        body: "アカウント情報（氏名、メールアドレス）、アップロードされた商品画像や動画ファイル、広告動画の生成履歴、および請求処理に関するメタデータを収集します。",
+      },
+      {
+        heading: "利用しているサービスプロバイダー",
+        body: "認証・データベース・ファイル保存にはSupabaseを、広告動画のAI生成にはfal.aiなどのモデル基盤プロバイダーを利用しています。これらのプロバイダーは、サービス提供の目的でのみお客様のデータを処理します。",
+      },
+      {
+        heading: "データを販売しません",
+        body: "お客様の個人データを第三者に販売・貸与すること、またはマーケティング目的で共有することは、いかなる場合もありません。",
+      },
+      {
+        heading: "データの保持",
+        body: "アップロードされたメディアファイルと生成された動画は、アカウントが有効な間保持されます。アカウントの削除をご希望の場合、合理的な期間内にデータをシステムから削除します。",
+      },
+      {
+        heading: "お問い合わせ",
+        body: "プライバシーに関するご質問やご要望は、privacy@reklamlarai.com までご連絡ください。",
       },
     ],
   },
@@ -62,7 +88,7 @@ const content = {
 export default async function PrivacyPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const data = locale === "en" ? content.en : content.tr;
+  const data = locale === "en" ? content.en : locale === "ja" ? content.ja : content.tr;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">

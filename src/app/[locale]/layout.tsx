@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter, Noto_Sans_JP } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -16,6 +16,12 @@ const bricolage = Bricolage_Grotesque({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const notoJp = Noto_Sans_JP({
+  variable: "--font-noto-jp",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -44,7 +50,10 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${bricolage.variable} ${inter.variable} h-full`}>
+    <html
+      lang={locale}
+      className={`${bricolage.variable} ${inter.variable} ${notoJp.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>

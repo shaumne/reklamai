@@ -57,12 +57,38 @@ const content = {
       },
     ],
   },
+  ja: {
+    title: "利用規約",
+    updated: "最終更新日: 2026年7月4日",
+    sections: [
+      {
+        heading: "サービスの概要",
+        body: "ReklamlarAIは、ユーザーがアップロードした商品画像・動画、または入力した短い説明文をもとに、AIモデルで広告動画を生成するSaaS（サービスとしてのソフトウェア）です。本サービスを利用することで、本規約に同意したものとみなされます。",
+      },
+      {
+        heading: "クレジットと返金ポリシー",
+        body: "動画の生成には、選択したAIモデルと動画の長さに応じたクレジットが消費されます。技術的なエラーにより生成が失敗した場合、消費されたクレジットは自動的にアカウントへ返還されます。正常に完了した生成についてはクレジットの返金は行われません。",
+      },
+      {
+        heading: "商用利用の権利",
+        body: "有料プランに加入しているユーザーは、生成した動画を広告キャンペーンを含むあらゆる媒体で商用利用できます。無料プランで生成されたウォーターマーク付きプレビューは商用利用には適していません。",
+      },
+      {
+        heading: "サブスクリプションと解約",
+        body: "サブスクリプションは、追加料金なしでいつでもワンクリックで解約できます。解約は現在の請求期間の終了時に有効となり、それまではアカウント内のクレジットを引き続き利用できます。",
+      },
+      {
+        heading: "責任の制限",
+        body: "ReklamlarAIは、AIが生成したコンテンツの正確性、独自性、または特定目的への適合性を保証しません。生成されたコンテンツを公開する前に確認することは、ユーザーの責任です。",
+      },
+    ],
+  },
 } as const;
 
 export default async function TermsPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const data = locale === "en" ? content.en : content.tr;
+  const data = locale === "en" ? content.en : locale === "ja" ? content.ja : content.tr;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6">

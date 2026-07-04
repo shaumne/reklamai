@@ -39,8 +39,8 @@
 
   --color-paper: #faf7f2;
 
-  --font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", var(--font-noto-jp), sans-serif;
+  --font-sans: var(--font-inter), "Inter", var(--font-noto-jp), system-ui, sans-serif;
 
   /* layered, color-tinted shadows */
   --shadow-lift:

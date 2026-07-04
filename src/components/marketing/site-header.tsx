@@ -58,6 +58,13 @@ export function SiteHeader() {
             >
               EN
             </Link>
+            <Link
+              href={pathname}
+              locale="ja"
+              className="rounded-full px-2.5 py-1 transition-colors duration-150 hover:text-flame-600 aria-[current=page]:bg-ink-900 aria-[current=page]:text-white"
+            >
+              JA
+            </Link>
           </div>
           <Link href="/login" className={buttonVariants({ variant: "ghost", size: "sm" })}>
             {t("login")}
@@ -112,6 +119,14 @@ export function SiteHeader() {
               className="rounded-full border border-ink-200 px-3 py-1 text-xs font-semibold text-ink-600 transition-colors duration-150 hover:border-flame-300 hover:text-flame-600"
             >
               EN
+            </Link>
+            <Link
+              href={pathname}
+              locale="ja"
+              onClick={() => setOpen(false)}
+              className="rounded-full border border-ink-200 px-3 py-1 text-xs font-semibold text-ink-600 transition-colors duration-150 hover:border-flame-300 hover:text-flame-600"
+            >
+              JA
             </Link>
           </div>
 

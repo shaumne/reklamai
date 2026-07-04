@@ -74,7 +74,7 @@ export type CreateWizardProps = {
   models: ModelCatalogRow[];
   balance: number;
   planTier: PlanTier;
-  locale: "tr" | "en";
+  locale: "tr" | "en" | "ja";
 };
 
 const VOICE_OPTIONS = ["Rachel", "Adam", "Bella", "Antoni"];

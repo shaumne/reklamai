@@ -30,7 +30,7 @@ export function RegisterForm() {
       name,
       email,
       password,
-      locale: locale === "en" ? "en" : "tr",
+      locale: locale === "en" || locale === "ja" ? locale : "tr",
     });
 
     if (!result.ok) {

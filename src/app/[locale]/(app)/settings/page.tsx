@@ -49,6 +49,13 @@ export default async function SettingsPage({
           >
             English
           </Link>
+          <Link
+            href="/settings"
+            locale="ja"
+            className="rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-600 transition-colors duration-150 hover:border-flame-300 hover:text-flame-700 aria-[current=page]:border-flame-500 aria-[current=page]:bg-flame-100 aria-[current=page]:text-flame-700 aria-[current=page]:ring-2 aria-[current=page]:ring-flame-200"
+          >
+            日本語
+          </Link>
         </div>
       </section>
 
