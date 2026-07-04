@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
+import { GoogleButton } from "./google-button";
 
 export function LoginForm() {
   const t = useTranslations("auth");
@@ -39,7 +40,9 @@ export function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <>
+      <GoogleButton />
+      <form onSubmit={handleSubmit} className="space-y-4">
       {error && (
         <div className="rounded-xl bg-danger-100 p-3 text-sm text-danger-700" role="alert">
           {t("invalidCredentials")}
@@ -89,5 +92,6 @@ export function LoginForm() {
         </Link>
       </p>
     </form>
+    </>
   );
 }

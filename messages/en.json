@@ -134,7 +134,9 @@
     "confirmEmailSent": "Confirmation email sent. Check your inbox and click the link.",
     "invalidCredentials": "Invalid email or password.",
     "genericError": "Something went wrong. Please try again.",
-    "passwordHint": "At least 8 characters"
+    "passwordHint": "At least 8 characters",
+    "continueWithGoogle": "Continue with Google",
+    "orDivider": "or"
   },
   "dashboard": {
     "title": "Dashboard",

@@ -134,7 +134,9 @@
     "confirmEmailSent": "Doğrulama e-postası gönderildi. Gelen kutunuzu kontrol edip bağlantıya tıklayın.",
     "invalidCredentials": "E-posta veya şifre hatalı.",
     "genericError": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
-    "passwordHint": "En az 8 karakter"
+    "passwordHint": "En az 8 karakter",
+    "continueWithGoogle": "Google ile devam et",
+    "orDivider": "veya"
   },
   "dashboard": {
     "title": "Panel",
