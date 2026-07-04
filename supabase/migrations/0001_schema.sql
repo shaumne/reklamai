@@ -29,7 +29,9 @@ create policy "profiles_update_own" on public.profiles
 create or replace function public.protect_profile_columns()
 returns trigger language plpgsql as $$
 begin
-  if current_setting('request.jwt.claim.role', true) is distinct from 'service_role' then
+  -- end-user requests (auth.uid() present) cannot change role/plan_tier;
+  -- service-role and direct connections pass through
+  if auth.uid() is not null then
     new.role := old.role;
     new.plan_tier := old.plan_tier;
   end if;
