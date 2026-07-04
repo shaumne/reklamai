@@ -21,8 +21,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "ReklamAI — AI ile Reklam Videosu",
-    template: "%s · ReklamAI",
+    default: "ReklamlarAI — AI ile Reklam Videosu",
+    template: "%s · ReklamlarAI",
   },
   description:
     "İşletmeniz için saniyeler içinde profesyonel reklam videoları üretin. Görselden videoya, seslendirme ve müzik dahil.",

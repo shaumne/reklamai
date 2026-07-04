@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "ReklamAI",
+    "appName": "ReklamlarAI",
     "credits": "kredi",
     "loading": "Yükleniyor…",
     "save": "Kaydet",
@@ -29,7 +29,7 @@
   "landing": {
     "badge": "Yapay zeka ile reklam üretimi",
     "heroTitle": "Reklam videonuz, kahveniz soğumadan hazır",
-    "heroSubtitle": "Ürün görselinizi yükleyin; ReklamAI sektörünüze özel kurguyla profesyonel reklam videosunu, seslendirmesi ve müziğiyle birlikte dakikalar içinde üretsin.",
+    "heroSubtitle": "Ürün görselinizi yükleyin; ReklamlarAI sektörünüze özel kurguyla profesyonel reklam videosunu, seslendirmesi ve müziğiyle birlikte dakikalar içinde üretsin.",
     "heroCta": "20 kredi ile ücretsiz dene",
     "heroSecondary": "Fiyatları gör",
     "heroNote": "Kredi kartı gerekmez · 14 sektör şablonu · TR ve EN",
@@ -60,14 +60,14 @@
     "planFreeName": "Ücretsiz",
     "planFreeDesc": "Denemek için",
     "planFreeCredits": "20 hoş geldin kredisi",
-    "planFree1": "Ekonomik AI modelleri",
+    "planFree1": "Tüm modeller açık (Veo dahil)",
     "planFree2": "720p, filigranlı önizleme",
     "planFree3": "Tüm sektör şablonları",
     "planStarterName": "Starter",
     "planStarterDesc": "Küçük işletmeler için",
     "planStarterCredits": "Ayda 200 kredi",
     "planStarter1": "Filigransız indirme",
-    "planStarter2": "Premium modeller dahil (Veo)",
+    "planStarter2": "Ticari kullanım hakkı",
     "planStarter3": "1080p çözünürlük",
     "planStarter4": "Seslendirme + müzik",
     "planStarter5": "1 ay kredi devri",

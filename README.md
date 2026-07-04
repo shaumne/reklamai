@@ -1,4 +1,4 @@
-# ReklamAI
+# ReklamlarAI
 
 AI destekli reklam videosu stüdyosu. İşletmeler ürün görsellerinden veya kısa bir
 açıklamadan, sektörlerine özel kurguyla saniyeler içinde reklam videosu üretir;

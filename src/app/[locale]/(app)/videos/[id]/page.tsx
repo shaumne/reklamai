@@ -87,7 +87,7 @@ export default async function VideoDetailPage({
           <video controls className="w-full rounded-2xl bg-ink-900" src={signedUrl ?? undefined} />
           {isFree && (
             <div className="pointer-events-none absolute inset-0 grid place-items-center">
-              <span className="rotate-[-18deg] font-display text-4xl text-white/40">ReklamAI</span>
+              <span className="rotate-[-18deg] font-display text-4xl text-white/40">ReklamlarAI</span>
             </div>
           )}
         </div>

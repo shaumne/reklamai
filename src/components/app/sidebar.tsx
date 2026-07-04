@@ -33,7 +33,7 @@ export function Sidebar() {
               <Flame className="size-4" strokeWidth={2.5} />
             </span>
             <span className="font-display">
-              Reklam<span className="text-flame-500">AI</span>
+              Reklamlar<span className="text-flame-500">AI</span>
             </span>
           </Link>
 

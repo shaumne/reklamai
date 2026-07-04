@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "ReklamAI",
+    "appName": "ReklamlarAI",
     "credits": "credits",
     "loading": "Loading…",
     "save": "Save",
@@ -29,7 +29,7 @@
   "landing": {
     "badge": "AI-powered ad production",
     "heroTitle": "Your video ad, ready before your coffee cools",
-    "heroSubtitle": "Upload a product photo and let ReklamAI produce a professional video ad — with industry-specific direction, voiceover and music — in minutes.",
+    "heroSubtitle": "Upload a product photo and let ReklamlarAI produce a professional video ad — with industry-specific direction, voiceover and music — in minutes.",
     "heroCta": "Try free with 20 credits",
     "heroSecondary": "See pricing",
     "heroNote": "No credit card required · 14 industry templates · EN & TR",
@@ -60,14 +60,14 @@
     "planFreeName": "Free",
     "planFreeDesc": "For trying it out",
     "planFreeCredits": "20 welcome credits",
-    "planFree1": "Budget AI models",
+    "planFree1": "All models unlocked (incl. Veo)",
     "planFree2": "720p, watermarked preview",
     "planFree3": "All industry templates",
     "planStarterName": "Starter",
     "planStarterDesc": "For small businesses",
     "planStarterCredits": "200 credits/month",
     "planStarter1": "Watermark-free downloads",
-    "planStarter2": "Premium models included (Veo)",
+    "planStarter2": "Commercial usage rights",
     "planStarter3": "1080p resolution",
     "planStarter4": "Voiceover + music",
     "planStarter5": "1-month credit rollover",

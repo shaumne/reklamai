@@ -14,19 +14,19 @@ values
 
   ('kling-25-turbo-t2v', 'fal-ai/kling-video/v2.5-turbo/pro/text-to-video', 'video_t2v', 'standard', 'Kling 2.5 Turbo',
    'second', 0.070000, null, false, array[5, 10], array['16:9', '9:16', '1:1'],
-   'starter', true, 20, 'cinematic motion, fast'),
+   'free', true, 20, 'cinematic motion, fast'),
 
   ('veo-31-t2v', 'fal-ai/veo3.1', 'video_t2v', 'premium', 'Veo 3.1',
    'second', 0.200000, 0.400000, false, array[4, 6, 8], array['16:9', '9:16'],
-   'starter', true, 30, 'audio toggle doubles per-second price'),
+   'free', true, 30, 'audio toggle doubles per-second price'),
 
   ('sora-2-t2v', 'fal-ai/sora-2/text-to-video', 'video_t2v', 'premium', 'Sora 2',
    'second', 0.100000, null, true, array[4, 8, 12], array['16:9', '9:16'],
-   'starter', false, 40, 'verify id+price before enabling'),
+   'free', false, 40, 'verify id+price before enabling'),
 
   ('seedance-2-fast-t2v', 'fal-ai/bytedance/seedance/v1/pro/text-to-video', 'video_t2v', 'standard', 'Seedance',
    'second', 0.241900, null, true, array[5, 10], array['16:9', '9:16', '1:1'],
-   'starter', false, 50, 'verify id+price before enabling; native audio'),
+   'free', false, 50, 'verify id+price before enabling; native audio'),
 
   ('ltx-2-t2v', 'fal-ai/ltx-2/text-to-video', 'video_t2v', 'budget', 'LTX 2',
    'second', 0.060000, null, false, array[5, 10], array['16:9', '9:16'],
@@ -39,11 +39,11 @@ values
 
   ('kling-v3-turbo-i2v', 'fal-ai/kling-video/v3/turbo/pro/image-to-video', 'video_i2v', 'standard', 'Kling V3 Turbo',
    'second', 0.140000, null, false, array[5, 10], array['16:9', '9:16', '1:1'],
-   'starter', true, 20, null),
+   'free', true, 20, null),
 
   ('veo-31-i2v', 'fal-ai/veo3.1/image-to-video', 'video_i2v', 'premium', 'Veo 3.1',
    'second', 0.200000, 0.400000, false, array[4, 6, 8], array['16:9', '9:16'],
-   'starter', false, 30, 'verify id before enabling'),
+   'free', false, 30, 'verify id before enabling'),
 
   ('kling-v3-4k-i2v', 'fal-ai/kling-video/v3/4k/image-to-video', 'video_i2v', 'ultra', 'Kling V3 4K',
    'second', 0.420000, null, false, array[5, 10], array['16:9', '9:16'],
@@ -52,11 +52,11 @@ values
   -- ---- video-to-video ----
   ('kling-o1-v2v', 'fal-ai/kling-video/o1/video-to-video/edit', 'video_v2v', 'standard', 'Kling O1 Edit',
    'second', 0.168000, null, false, array[5, 10], array['16:9', '9:16', '1:1'],
-   'starter', true, 10, 'style transfer / edit, keeps motion'),
+   'free', true, 10, 'style transfer / edit, keeps motion'),
 
   ('sora-2-v2v', 'fal-ai/sora-2/video-to-video/remix', 'video_v2v', 'premium', 'Sora 2 Remix',
    'second', 0.300000, null, true, array[4, 8], array['16:9', '9:16'],
-   'starter', false, 20, 'verify id+price before enabling'),
+   'free', false, 20, 'verify id+price before enabling'),
 
   -- ---- voiceover (tts) ----
   ('elevenlabs-turbo', 'fal-ai/elevenlabs/tts/turbo-v2.5', 'tts', 'standard', 'Voiceover',
@@ -65,7 +65,7 @@ values
 
   ('elevenlabs-v3', 'fal-ai/elevenlabs/tts/eleven-v3', 'tts', 'premium', 'Voiceover Pro',
    'chars_1k', 0.100000, null, false, null, null,
-   'starter', true, 20, null),
+   'free', true, 20, null),
 
   -- ---- music ----
   ('cassette-music', 'cassetteai/music-generator', 'music', 'budget', 'Music',
@@ -74,7 +74,7 @@ values
 
   ('stable-audio-25', 'fal-ai/stable-audio-25/text-to-audio', 'music', 'premium', 'Music Pro',
    'generation', 0.200000, null, false, null, null,
-   'starter', false, 20, 'verify id before enabling'),
+   'free', false, 20, 'verify id before enabling'),
 
   -- ---- image (storyboard / stills) ----
   ('flux-schnell', 'fal-ai/flux/schnell', 'image', 'budget', 'Flux Schnell',
@@ -83,12 +83,12 @@ values
 
   ('flux-dev', 'fal-ai/flux/dev', 'image', 'standard', 'Flux Dev',
    'megapixel', 0.025000, null, false, null, array['16:9', '9:16', '1:1'],
-   'starter', true, 20, null),
+   'free', true, 20, null),
 
   -- ---- upscale ----
   ('video-upscaler', 'fal-ai/video-upscaler', 'upscale', 'standard', 'Video Upscale',
    'second', 0.020000, null, false, null, null,
-   'starter', false, 10, 'verify id before enabling')
+   'free', false, 10, 'verify id before enabling')
 on conflict (id) do update set
   fal_model_id = excluded.fal_model_id,
   unit_price_usd = excluded.unit_price_usd,

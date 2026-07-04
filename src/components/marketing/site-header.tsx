@@ -27,7 +27,7 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           className="font-display text-xl font-bold tracking-tight text-ink-900"
         >
-          Reklam<span className="text-flame-500">AI</span>
+          Reklamlar<span className="text-flame-500">AI</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

@@ -11,7 +11,7 @@ const content = {
     sections: [
       {
         heading: "Hizmet tanımı",
-        body: "ReklamAI, kullanıcıların yükledikleri ürün görselleri, videolar veya yazdıkları kısa açıklamalar temel alınarak yapay zeka modelleriyle reklam videosu üretilmesini sağlayan bir yazılım hizmetidir (SaaS). Hizmeti kullanarak bu koşulları kabul etmiş sayılırsınız.",
+        body: "ReklamlarAI, kullanıcıların yükledikleri ürün görselleri, videolar veya yazdıkları kısa açıklamalar temel alınarak yapay zeka modelleriyle reklam videosu üretilmesini sağlayan bir yazılım hizmetidir (SaaS). Hizmeti kullanarak bu koşulları kabul etmiş sayılırsınız.",
       },
       {
         heading: "Krediler ve iade politikası",
@@ -27,7 +27,7 @@ const content = {
       },
       {
         heading: "Sorumluluk sınırlaması",
-        body: "ReklamAI, yapay zeka tarafından üretilen içeriğin doğruluğunu, özgünlüğünü veya belirli bir amaca uygunluğunu garanti etmez. Üretilen içeriğin yayınlanmadan önce gözden geçirilmesi kullanıcının sorumluluğundadır.",
+        body: "ReklamlarAI, yapay zeka tarafından üretilen içeriğin doğruluğunu, özgünlüğünü veya belirli bir amaca uygunluğunu garanti etmez. Üretilen içeriğin yayınlanmadan önce gözden geçirilmesi kullanıcının sorumluluğundadır.",
       },
     ],
   },
@@ -37,7 +37,7 @@ const content = {
     sections: [
       {
         heading: "Service description",
-        body: "ReklamAI is a software-as-a-service platform that generates advertising videos with AI models based on product images, videos, or text descriptions that users upload or write. By using the service, you agree to these terms.",
+        body: "ReklamlarAI is a software-as-a-service platform that generates advertising videos with AI models based on product images, videos, or text descriptions that users upload or write. By using the service, you agree to these terms.",
       },
       {
         heading: "Credits and refund policy",
@@ -53,7 +53,7 @@ const content = {
       },
       {
         heading: "Limitation of liability",
-        body: "ReklamAI does not guarantee the accuracy, originality, or fitness for a particular purpose of AI-generated content. It is the user's responsibility to review generated content before publishing it.",
+        body: "ReklamlarAI does not guarantee the accuracy, originality, or fitness for a particular purpose of AI-generated content. It is the user's responsibility to review generated content before publishing it.",
       },
     ],
   },

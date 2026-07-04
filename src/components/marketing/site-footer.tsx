@@ -18,7 +18,7 @@ export async function SiteFooter() {
         <div className="grid gap-12 sm:grid-cols-3">
           <div>
             <Link href="/" className="font-display text-xl font-bold tracking-tight text-ink-50">
-              Reklam<span className="text-flame-400">AI</span>
+              Reklamlar<span className="text-flame-400">AI</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-ink-300">{t("footerTagline")}</p>
           </div>
@@ -67,7 +67,7 @@ export async function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 text-sm text-ink-400">
-          © 2026 ReklamAI. {t("footerRights")}
+          © 2026 ReklamlarAI. {t("footerRights")}
         </div>
       </div>
     </footer>

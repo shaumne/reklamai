@@ -14,7 +14,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           <Flame className="size-5" strokeWidth={2.5} />
         </span>
         <span className="font-display tracking-tight">
-          Reklam<span className="text-flame-500">AI</span>
+          Reklamlar<span className="text-flame-500">AI</span>
         </span>
       </Link>
       <Card className="animate-rise w-full max-w-md shadow-(--shadow-lift-lg)">{children}</Card>
