@@ -94,9 +94,13 @@ export function buildTtsInput(text: string, voice: string): Record<string, unkno
 }
 
 export function buildMusicInput(
+  falModelId: string,
   prompt: string,
   durationSeconds: number,
 ): Record<string, unknown> {
+  if (falModelId.includes("stable-audio")) {
+    return { prompt, seconds_total: durationSeconds };
+  }
   return { prompt, duration: durationSeconds };
 }
 

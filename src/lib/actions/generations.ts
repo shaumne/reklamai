@@ -178,7 +178,7 @@ export async function createGeneration(raw: CreateGenerationInput): Promise<Acti
       prompt: input.music.stylePrompt,
       credits: computeCredits({ model: musicModel, minutes: musicSeconds / 60 }),
       params: { stylePrompt: input.music.stylePrompt, seconds: musicSeconds },
-      falInput: () => buildMusicInput(input.music!.stylePrompt, musicSeconds),
+      falInput: () => buildMusicInput(musicModel.fal_model_id, input.music!.stylePrompt, musicSeconds),
     });
   }
 
